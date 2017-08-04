@@ -40,7 +40,8 @@ module.exports = {
     }
 
     var importJavascript = getDefault('import', 'javascript', [options, defaults]);
-    if (!process.env.EMBER_CLI_FASTBOOT && importJavascript) {
+    var isFastboot = process.env.EMBER_CLI_FASTBOOT !== 'true';
+    if (!isFastboot && importJavascript) {
       var sourceJavascript = getDefault('source', 'javascript', [options, defaults]);
       app.import({
         development: path.join(sourceJavascript, 'semantic.js'),
